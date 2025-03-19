@@ -162,7 +162,7 @@ elif [ "$FF_ARCH" = "x86_64" ]; then
 
 elif [ "$FF_ARCH" = "arm64" ]; then
     FF_TOOLCHAIN_ARCH=arm64
-    FF_ANDROID_PLATFORM=21
+    FF_ANDROID_PLATFORM=24
 
     FF_BUILD_NAME=ffmpeg-arm64
     FF_BUILD_NAME_OPENSSL=openssl-arm64
@@ -363,7 +363,7 @@ else
     ./configure $FF_CFG_FLAGS \
         --extra-cflags="$FF_CFLAGS $FF_EXTRA_CFLAGS" \
         --extra-ldflags="$FF_DEP_LIBS $FF_EXTRA_LDFLAGS"
-    make clean
+    /usr/bin/make clean
 fi
 
 #--------------------
@@ -372,8 +372,8 @@ echo "--------------------"
 echo "[*] compile ffmpeg"
 echo "--------------------"
 cp config.* $FF_PREFIX
-make $FF_MAKE_FLAGS > /dev/null
-make install
+    /usr/bin/make $FF_MAKE_FLAGS > /dev/null
+    /usr/bin/make install
 mkdir -p $FF_PREFIX/include/libffmpeg
 cp -f config.h $FF_PREFIX/include/libffmpeg/config.h
 
